@@ -5,7 +5,7 @@ package game;
  */
 public class Board {
     /* Size of the board (3x3). */
-    final int SIZE = 3;
+    public final int SIZE = 3;
 
     /* Internal 2D array to store board cells */
     protected char[][] board;
@@ -20,6 +20,10 @@ public class Board {
                 this.board[i][j] = ' ';
             }
         }
+    }
+
+    public char[][] getBoard() {
+        return this.board;
     }
 
     /**
@@ -60,22 +64,10 @@ public class Board {
      *
      * @param row The row index.
      * @param col The column index.
-     * @param symbol The player's symbol ('X' or 'O').
+     * @param symbol The game.player's symbol ('X' or 'O').
      */
     public void placeMove(int row, int col, char symbol) {
         this.board[row][col] = symbol;
-    }
-
-    /**
-     * Prints the current state of the board to the console.
-     */
-    public void printBoard() {
-        for (int i = 0; i < SIZE; i++) {
-            System.out.println(this.board[i][0] + " | " +  this.board[i][1] + " | " + this.board[i][2]);
-            if (i < SIZE - 1) {
-                System.out.println("---+---+---");
-            }
-        }
     }
 
     /**
@@ -95,31 +87,47 @@ public class Board {
     }
 
     /**
-     * Checks whether the current board state results in a win.
+     * Returns the symbol ('X' or 'O') of the player who has won the game.
+     * Checks all rows, columns, and both diagonals for a winning condition.
+     * If there is no winner, returns the null character '\0'.
      *
-     * @return true if any row, column, or diagonal contains the same non-empty symbol.
+     * @return the symbol of the winning player, or '\0' if there is no winner.
      */
-    public boolean checkWin() {
+    public char getWinner() {
         // Rows
         for (int i = 0; i < SIZE; i++) {
             if (isOccupied(i, 0) && (this.board[i][0] == this.board[i][1]) && (this.board[i][0] == this.board[i][2])) {
-                return true;
+                return board[i][0];
             }
         }
 
         // Columns
         for (int i = 0; i < SIZE; i++) {
             if (isOccupied(0, i) && (this.board[0][i] == this.board[1][i]) && (this.board[0][i] == this.board[2][i])) {
-                return true;
+                return board[0][i];
             }
         }
 
         // Main diagonal
         if (isOccupied(0, 0) && (this.board[0][0] == this.board[1][1]) && (this.board[0][0] == this.board[2][2])) {
-            return true;
+            return board[0][0];
         }
 
         // Secondary diagonal
-        return isOccupied(0, 2) && (this.board[0][2] == this.board[1][1]) && (this.board[0][2] == this.board[2][0]);
+        if (isOccupied(0, 2) && (this.board[0][2] == this.board[1][1]) && (this.board[0][2] == this.board[2][0])) {
+            return board[0][2];
+        }
+
+        return '\0';
+    }
+
+    /**
+     * Restore a board cell to empty.
+     *
+     * @param row The row index.
+     * @param col The column index.
+     */
+    public void restoreMove(int row, int col) {
+        board[row][col] = ' ';
     }
 }
