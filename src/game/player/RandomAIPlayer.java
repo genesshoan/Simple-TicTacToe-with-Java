@@ -29,6 +29,7 @@ public class RandomAIPlayer extends Player {
         boolean validMove = false;
 
         console.printMessage("Player " + getSymbol() + " is thinking...\n");
+        // Keep trying random positions until finding a valid move
         do {
             int rowIndex = rand.nextInt(board.SIZE);
             int colIndex = rand.nextInt(board.SIZE);

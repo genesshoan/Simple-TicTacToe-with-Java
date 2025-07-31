@@ -34,7 +34,8 @@ public class Game {
     }
 
     /**
-     * Determines that if the playerOne starts.
+     * Randomly determines which player starts the game.
+     * This adds unpredictability and fairness to gameplay.
      *
      * @return true if the playerOne starts, false otherwise.
      */
@@ -44,7 +45,8 @@ public class Game {
     }
 
     /**
-     * Main game loop. Alternates turns and checks for win/tie.
+     * Main game loop. Alternates turns between players until win or tie.
+     * Uses polymorphism to handle different player types (Human, AI) uniformly.
      *
      * @param board Current board state.
      * @param console Interface to handle the user I/O.

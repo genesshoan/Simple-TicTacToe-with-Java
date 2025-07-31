@@ -55,7 +55,9 @@ public class MinMaxAI extends Player {
     }
 
     /**
-     * Determines the total score of the best move to do in the current board state.
+     * MinMax algorithm implementation for Tic Tac Toe AI.
+     * This algorithm evaluates all possible future moves to choose the optimal one.
+     * It assumes both players play optimally.
      *
      * @param board The current board state.
      * @param depth The current level of recursion. Used to give preference

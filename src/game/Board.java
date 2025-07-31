@@ -94,26 +94,26 @@ public class Board {
      * @return the symbol of the winning player, or '\0' if there is no winner.
      */
     public char getWinner() {
-        // Rows
+        // Check all rows for three in a row
         for (int i = 0; i < SIZE; i++) {
             if (isOccupied(i, 0) && (this.board[i][0] == this.board[i][1]) && (this.board[i][0] == this.board[i][2])) {
                 return board[i][0];
             }
         }
 
-        // Columns
+        // Check all columns for three in a row
         for (int i = 0; i < SIZE; i++) {
             if (isOccupied(0, i) && (this.board[0][i] == this.board[1][i]) && (this.board[0][i] == this.board[2][i])) {
                 return board[0][i];
             }
         }
 
-        // Main diagonal
+        // Check main diagonal (top-left to bottom-right)
         if (isOccupied(0, 0) && (this.board[0][0] == this.board[1][1]) && (this.board[0][0] == this.board[2][2])) {
             return board[0][0];
         }
 
-        // Secondary diagonal
+        // Check anti-diagonal (top-right to bottom-left)
         if (isOccupied(0, 2) && (this.board[0][2] == this.board[1][1]) && (this.board[0][2] == this.board[2][0])) {
             return board[0][2];
         }

@@ -73,8 +73,14 @@ public class Console {
         printMessage("Select an option: ");
     }
 
+    /**
+     * Displays the main menu, prompts the user to select a game mode, and returns the selected option as a GameMode enum.
+     *
+     * @return the selected GameMode based on the user's input
+     */
     public GameMode selectMenuOption() {
         int option = -1;
+        // Keep asking until user provides valid input
         while (true) {
             printMenuOptions();
             if (input.hasNextInt()) {

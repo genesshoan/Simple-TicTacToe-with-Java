@@ -5,6 +5,8 @@ import game.Console;
 
 /**
  * Abstract class representing a player in the game.
+ * Uses Strategy pattern - different player types implement different play strategies.
+ * This allows easy extension with new AI algorithms or player types.
  */
 public abstract class Player {
     /* Symbol of the player ('X' or 'O'). */
